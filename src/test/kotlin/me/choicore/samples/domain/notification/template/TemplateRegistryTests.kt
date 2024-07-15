@@ -23,7 +23,6 @@ class TemplateRegistryTests(
             )
 
         templateRegistry.register(definition)
-        templateRegistry.register(definition)
     }
 
     @Test

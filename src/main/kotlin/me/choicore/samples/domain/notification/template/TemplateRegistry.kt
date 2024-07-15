@@ -7,7 +7,7 @@ class TemplateRegistry(
     private val templateRepository: TemplateRepository,
 ) {
     fun register(definition: TemplateDefinition) {
-        check(existsByName(definition.name)) {
+        check(!existsByName(definition.name)) {
             "Template with name '${definition.name}' already exists"
         }
 

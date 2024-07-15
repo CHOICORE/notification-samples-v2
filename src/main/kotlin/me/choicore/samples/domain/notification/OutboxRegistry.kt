@@ -11,7 +11,6 @@ class OutboxRegistry(
         message: Message,
         sender: Sender,
         recipient: Recipient,
-    ) {
-        outboxRepository.register(type, message, sender, recipient)
-    }
+        errorMessage: String? = null,
+    ): Long = outboxRepository.register(type, message, sender, recipient, errorMessage)
 }

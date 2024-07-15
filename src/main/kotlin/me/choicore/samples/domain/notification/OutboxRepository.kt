@@ -6,5 +6,6 @@ interface OutboxRepository {
         message: Message,
         sender: Sender,
         recipient: Recipient,
-    )
+        errorMessage: String?,
+    ): Long
 }

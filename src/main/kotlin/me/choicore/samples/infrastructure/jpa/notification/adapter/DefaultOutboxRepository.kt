@@ -18,14 +18,24 @@ class DefaultOutboxRepository(
         message: Message,
         sender: Sender,
         recipient: Recipient,
-    ) {
-        outboxJpaRepository.save(
-            OutboxEntity(
-                type = type,
-                message = message,
-                sender = sender,
-                recipient = recipient,
-            ),
-        )
-    }
+        errorMessage: String?,
+    ): Long =
+        outboxJpaRepository
+            .save(
+                OutboxEntity(
+                    type = type,
+                    message = message,
+                    sender = sender,
+                    recipient = recipient,
+                    errorMessage = errorMessage,
+                    status = determineStatus(errorMessage),
+                ),
+            ).id
+
+    private fun determineStatus(errorMessage: String?): OutboxEntity.Status =
+        if (errorMessage != null) {
+            OutboxEntity.Status.FAILED
+        } else {
+            OutboxEntity.Status.PENDING
+        }
 }
