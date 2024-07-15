@@ -7,9 +7,11 @@ import me.choicore.samples.domain.notification.template.TemplateType
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.context.TestConstructor
+import org.springframework.transaction.annotation.Transactional
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
 @TestConstructor(autowireMode = TestConstructor.AutowireMode.ALL)
+@Transactional
 class NotificationManagerTests(
     private val notificationManager: NotificationManager,
     private val templateRegistry: TemplateRegistry,

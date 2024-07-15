@@ -2,10 +2,12 @@ package me.choicore.samples.domain.notification.template
 
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.context.TestConstructor
+import org.springframework.transaction.annotation.Transactional
 import kotlin.test.Test
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
 @TestConstructor(autowireMode = TestConstructor.AutowireMode.ALL)
+@Transactional
 class TemplateRegistryTests(
     private val templateRegistry: TemplateRegistry,
 ) {
